@@ -29,9 +29,9 @@
                             <td>{{$car->model}}</td>
                             <td>{{$car->price}}</td>
                             <td><a href="{{route('cars.show', ['car'=> $car->id])}}" class="btn btn-primary">SHOW</a></td>
+                            <td><a href="{{route('cars.destroy', ['car'=> $car->id])}}" class="btn btn-danger">DELETE</a></td>
                         </tr>
                     @endforeach
-
 
                 </tbody>
             </table>
