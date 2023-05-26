@@ -28,8 +28,15 @@
                             <td>{{$car->brand}}</td>
                             <td>{{$car->model}}</td>
                             <td>{{$car->price}}</td>
-                            <td><a href="{{route('cars.show', ['car'=> $car->id])}}" class="btn btn-primary">SHOW</a></td>
-                            <td><a href="{{route('cars.destroy', ['car'=> $car->id])}}" class="btn btn-danger">DELETE</a></td>
+                            <td>
+                              <a href="{{route('cars.show', ['car'=> $car->id])}}" class="btn btn-primary">SHOW</a>
+                              <form class="" action="{{route('cars.destroy', ['car' => $car->id])}}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">Elimina</button>
+                              </form>
+                              <a href="{{route('cars.edit', ['car'=> $car->id])}}" class="btn btn-warning">EDIT</a>
+                            </td>
                         </tr>
                     @endforeach
 
