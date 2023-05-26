@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreCarsRequest;
 use App\Http\Controllers\Controller;
 use App\Models\Car;
 use Illuminate\Http\Request;
@@ -26,7 +27,7 @@ class CarController extends Controller
      */
     public function create()
     {
-        //
+        return view('create');
     }
 
     /**
@@ -35,9 +36,16 @@ class CarController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreCarsRequest $request)
     {
-        //
+
+        $validated_data= $request->validated();
+        $newCar = new Car();
+        $newCar->fill($validated_data);
+        $newCar->save();
+        return redirect()->route('cars.show', ['car' => $newCar->id]);
+        
+
     }
 
     /**

@@ -13,6 +13,7 @@
     <h3>{{$car->price}}</h3>
     <h4>{{$car->cc}}</h4>
     <h5>{{$car->year_release}}</h5>
+    <a href="{{route('cars.index')}}" class="btn btn-primary">Back</a>
 
 
 
