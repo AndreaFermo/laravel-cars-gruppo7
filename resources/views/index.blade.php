@@ -29,6 +29,7 @@
                             <td>{{$car->model}}</td>
                             <td>{{$car->price}}</td>
                             <td><a href="{{route('cars.show', ['car'=> $car->id])}}" class="btn btn-primary">SHOW</a></td>
+                            <td><a href="{{route('cars.edit', ['car'=> $car->id])}}" class="btn btn-warning">EDIT</a></td>
                         </tr>
                     @endforeach
 
