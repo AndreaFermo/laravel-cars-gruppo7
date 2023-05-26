@@ -10,6 +10,7 @@
 <body>
     <div class="container">
         <div class="row">
+            <a href="{{route('cars.create')}}" class="btn btn-primary">Crea elemento</a>
             <table class="table">
                 <thead>
                     <tr>
