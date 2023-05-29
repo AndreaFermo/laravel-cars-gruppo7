@@ -74,7 +74,8 @@ class CarController extends Controller
      */
     public function edit(Car $car)
     {
-        return view('edit', compact('car'));
+        $optionals = Optional::all();
+        return view('edit', compact('car', 'optionals'));
     }
 
     /**
@@ -87,6 +88,7 @@ class CarController extends Controller
     public function update(UpdateCarRequest $request, Car $car)
     {
         $form_info = $request->validated();
+        $car->optionals()->sync($request->optionals);
         $car->update($form_info);
         return redirect()->route('cars.show', ['car' => $car->id]);
     }

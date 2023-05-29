@@ -18,6 +18,7 @@
                         <th scope="col">Brand</th>
                         <th scope="col">Model</th>
                         <th scope="col">Price</th>
+                        <th scope='col'>Optionals</th>
                         <th scope="col">Actions</th>
                     </tr>
                 </thead>
@@ -28,6 +29,11 @@
                             <td>{{$car->brand}}</td>
                             <td>{{$car->model}}</td>
                             <td>{{$car->price}}</td>
+                            <td>
+                                @foreach ($car->optionals as $optional)
+                                    <span class="text-bg-info rounded-pill badge">{{$optional->name}}</span>
+                                 @endforeach
+                            </td>
                             <td>
                               <a href="{{route('cars.show', ['car'=> $car->id])}}" class="btn btn-primary">SHOW</a>
                               <form class="" action="{{route('cars.destroy', ['car' => $car->id])}}" method="POST">
