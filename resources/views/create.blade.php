@@ -45,6 +45,18 @@
             @enderror
         </div>
 
+        <div class="mb-3">
+            @foreach($optionals as $optional)
+                <input id="tag_{{$optional->id}}" @if (in_array($optional->id , old('optionals', []))) checked @endif type="checkbox" name="optionals[]" value="{{$optional->id}}">
+                <label for="optional_{{$optional->id}}"  class="form-label">{{$optional->name}}</label>
+                <br>
+            @endforeach
+            @error('optionals')
+                <div class="invalid-feedback">
+                    {{$message}}
+                </div>
+            @enderror
+        </div>
         <button type="submit" class="btn btn-primary">Salva</button>
 
     </form>

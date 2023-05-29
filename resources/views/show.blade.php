@@ -13,6 +13,10 @@
     <h3>{{$car->price}}</h3>
     <h4>{{$car->cc}}</h4>
     <h5>{{$car->year_release}}</h5>
+    @foreach ($car->optionals as $optional)
+        <h6>{{$optional->name}}</h6>
+    @endforeach
+   
     <a href="{{route('cars.index')}}" class="btn btn-primary">Back</a>
 
 

@@ -6,6 +6,7 @@ use App\Http\Requests\StoreCarsRequest;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UpdateCarRequest;
 use App\Models\Car;
+use App\Models\Optional;
 use Illuminate\Http\Request;
 
 class CarController extends Controller
@@ -28,7 +29,8 @@ class CarController extends Controller
      */
     public function create()
     {
-        return view('create');
+        $optionals = Optional::all();
+        return view('create', compact('optionals'));
     }
 
     /**
@@ -44,8 +46,11 @@ class CarController extends Controller
         $newCar = new Car();
         $newCar->fill($validated_data);
         $newCar->save();
-        return redirect()->route('cars.show', ['car' => $newCar->id]);
+        if ($request->has('optionals')) {
+            $newCar->optionals()->attach($request->optionals);
+        }
 
+        return redirect()->route('cars.show', ['car' => $newCar->id]);
 
     }
 
